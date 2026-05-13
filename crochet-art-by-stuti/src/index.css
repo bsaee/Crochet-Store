@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-pink-soft: #FFD6E0;
+  --color-pink-mid: #F4A7B9;
+  --color-pink-deep: #E07A98;
+  --color-lilac-soft: #EAD9F7;
+  --color-lilac-mid: #C9A7E8;
+  --color-lilac-deep: #9B6BC7;
+  --color-cream: #FFF6F8;
+  --color-text-dark: #3D2535;
+  --color-text-mid: #7A5567;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-text-dark font-sans;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4' fill='%23F4A7B9' opacity='0.8'/%3E%3C/svg%3E") 10 10, auto;
+  }
+}
+
+.markdown-body {
+  @apply max-w-none text-text-mid leading-relaxed;
+}
