@@ -16,8 +16,8 @@ async function startServer() {
     // We don't send the preset to the client, we handle upload in backend or 
     // just confirm if config exists
     res.json({ 
-      hasCloudinary: !!process.env.CLOUDINARY_CLOUD_NAME,
-      whatsappNumber: process.env.WHATSAPP_NUMBER
+      hasCloudinary: !!process.env.VITE_CLOUDINARY_CLOUD_NAME,
+      whatsappNumber: process.env.VITE_WHATSAPP_NUMBER
     });
   });
 
@@ -25,7 +25,7 @@ async function startServer() {
   app.post("/api/upload", async (req, res) => {
     const { image, password } = req.body;
 
-    if (password !== process.env.ADMIN_PASSWORD) {
+    if (password !== process.env.VITE_ADMIN_PASSWORD) {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
@@ -33,7 +33,7 @@ async function startServer() {
       // Cloudinary upload logic...
       const formData = new FormData();
       formData.append('file', image);
-      formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET!);
+      formData.append('upload_preset', process.env.VITE_CLOUDINARY_UPLOAD_PRESET!);
 
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
@@ -51,10 +51,10 @@ async function startServer() {
   // NEW: Secure GitHub Sync Endpoint
   app.post("/api/sync-github", async (req, res) => {
     const { products, password } = req.body;
-    const token = process.env.GITHUB_TOKEN;
-    const repo = process.env.GITHUB_REPO; // e.g. "username/repo-name"
+    const token = process.env.VITE_GITHUB_TOKEN;
+    const repo = process.env.VITE_GITHUB_REPO; // e.g. "username/repo-name"
     
-    if (password !== process.env.ADMIN_PASSWORD) {
+    if (password !== process.env.VITE_ADMIN_PASSWORD) {
       return res.status(401).json({ error: "Unauthorized" });
     }
 

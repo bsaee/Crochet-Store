@@ -6,17 +6,18 @@ import ProductModal from './components/ProductModal';
 import { motion, AnimatePresence } from 'motion/react';
 import { Heart, Sparkles, ArrowRight } from 'lucide-react';
 
-// const INITIAL_SETTINGS: Settings = {
-//   whatsappNumber: process.env.WHATSAPP_NUMBER || '',
-//   adminPassword: process.env.ADMIN_PASSWORD || '',
-//   cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
-//   cloudinaryUploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET || '',
-// };
+const CONFIG = {
+  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER || '',
+  adminPass: import.meta.env.VITE_ADMIN_PASSWORD || '',
+  cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || '',
+  uploadPreset: import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || '',
+};
+
 const INITIAL_SETTINGS: Settings = {
-  whatsappNumber: '',
-  adminPassword: '',
-  cloudinaryCloudName: '',
-  cloudinaryUploadPreset: '',
+  whatsappNumber: CONFIG.whatsapp,
+  adminPassword: CONFIG.adminPass,
+  cloudinaryCloudName: CONFIG.cloudName,
+  cloudinaryUploadPreset: CONFIG.uploadPreset,
 };
 
 export default function App() {
