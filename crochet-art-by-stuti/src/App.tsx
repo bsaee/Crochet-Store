@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Heart, Sparkles, ArrowRight } from 'lucide-react';
 
 const INITIAL_SETTINGS: Settings = {
-  whatsappNumber: '9930795612',
-  adminPassword: 'Admin@13#Stuti',
-  cloudinaryCloudName: '',
-  cloudinaryUploadPreset: '',
+  whatsappNumber: process.env.WHATSAPP_NUMBER || '',
+  adminPassword: process.env.ADMIN_PASSWORD || '',
+  cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
+  cloudinaryUploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET || '',
 };
 
 export default function App() {
